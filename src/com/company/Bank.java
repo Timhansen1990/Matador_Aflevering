@@ -13,7 +13,7 @@ public class Bank {
         //deduct User cashAmount, note user as owner of buildingSite
         //Printstatement
 
-        if (Field.owner[buildingSite] == -1 ) {
+        if (Field.owner[buildingSite] == -1 && cashAmount[user] - Field.fieldPrice[buildingSite] > 0 ) {
             Scanner wouldBuy = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Would you buy " + Field.field[buildingSite] + " for the little amount of "
                     + Field.fieldPrice[buildingSite] + " dollars ?\nWrite Yes or No");
@@ -28,10 +28,15 @@ public class Bank {
                 System.out.println("Just fine, I wish you good journey, and greetings to all my neighbours please");
             }
         }
-        else{
-            cashAmount[user] = cashAmount[user] - Field.fieldPrice[buildingSite];
-            cashAmount[Field.owner[buildingSite]] = cashAmount[Field.owner[buildingSite]] +  Field.fieldPrice[buildingSite];
-            System.out.println("You have paid the morgage!");
+        else {
+            if(cashAmount[user] - Field.fieldPrice[buildingSite] > 0) {
+                cashAmount[user] = cashAmount[user] - Field.fieldPrice[buildingSite];
+                cashAmount[Field.owner[buildingSite]] = cashAmount[Field.owner[buildingSite]] + Field.fieldPrice[buildingSite];
+                System.out.println("You have paid the morgage!");
+            }
+            else {
+                System.out.println("You cannot buy because you do not have enough money!");
+            }
         }
         
     }

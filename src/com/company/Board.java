@@ -22,7 +22,7 @@ public class Board {
 
                if (playerLocation[i] == 0 ) {
                     System.out.println("You cant Buy");
-                }else if (playerLocation[0] > 9 || playerLocation[1] > 9 || playerLocation[2] > 9){
+                }else if (playerLocation[i] > 9){
                     System.out.println("You Cant Buy");
                 }
                 else {
